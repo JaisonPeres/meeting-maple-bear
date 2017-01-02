@@ -17,7 +17,7 @@ app.use(expressValidator());
 app.use(expressSession({
   secret: 'HawK@la290120',
   resave: false,
-  saveUninitialize: false
+  saveUninitialize: true
 }));
 
 consign()
