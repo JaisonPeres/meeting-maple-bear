@@ -14,11 +14,11 @@ app.set('views','./app/views');
 //Implementar o Body Parser como midleware...
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(expressValidator());
-app.use(expressSession({
-  secret: 'HawK@la290120',
-  resave: false,
-  saveUninitialize: true
-}));
+// app.use(expressSession({
+//   secret: 'HawK@la290120',
+//   resave: false,
+//   saveUninitialize: true
+// }));
 
 consign()
   .include('app/routes')
