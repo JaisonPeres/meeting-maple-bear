@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Bear Meeting - Reuniões</title>
+    <link rel="stylesheet" href="/css/master.css">
+  </head>
+  <body>
+    <ul class="menu">
+      <li><a href="/">Início</a></li>
+      <li><a href="/perfil">Perfil</a></li>
+      <li><a href="/reunioes" class="active">Reuniões</a></li>
+      <li><a href="/dashboard">Dashboard</a></li>
+      <li><a href="/configuracoes">Configurações</a></li>
+      <li><a href="/sair">Sair</a></li>
+    </ul>
+    <h1>Adicionar Reunião</h1>
+    <div class="container">
+      <% if(validacao.length > 0){ %>
+        <div class="alert alert-danger">
+          <strong>Atenção</strong>
+          <ul>
+            <% for(var i = 0; i < validacao.length; i++){ %>
+            <li><%= validacao[i].msg %></li>
+            <% } %>
+          </ul>
+        </div>
+      <% } %>
+      <form action="/reunioes/salvar" method="post">
+        <input id="title_meeting" type="text"name="title_meeting" value="<%=meeting.title_meeting%>" placeholder="Título da Reunião">
+        <br>
+        <textarea id="note_meeting" name="note_meeting" value="<%=meeting.note_meeting%>" rows="1" cols="80" placeholder="Descreva a reunião"></textarea>
+        <br>
+        <input id="date_event_meeting" type="date" value="<%=meeting.date_event_meeting%>" name="date_event_meeting">
+        <br>
+        <input id="time_event_meeting" type="time" value="<%=meeting.time_event_meeting%>" name="time_event_meeting">
+        <br>
+        <input id="parent_id_parent" type="text" placeholder="Responsável" name="parent_id_parent" value="<%=meeting.parent_id_parent%>" value="1">
+        <br>
+        <input id="user_id_user" type="text" placeholder="Usuário" name="user_id_user" value="<%=meeting.user_id_user%>" value="3">
+        <br>
+        <input id="teacher_id_teacher" type="text" placeholder="Professor" name="teacher_id_teacher" value="<%=meeting.teacher_id_teacher%>" value="1">
+        <br>
+        <input type="submit" name="" value="CADASTRAR">
+      </form>
+    </div>
+
+  </body>
+</html>

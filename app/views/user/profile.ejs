@@ -1,0 +1,40 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>Bear Meeting - Perfil</title>
+<link rel="stylesheet" href="/css/master.css">
+</head>
+<body>
+<ul class="menu">
+<li><a href="/">Início</a></li>
+<li><a href="/perfil" class="active">Perfil</a></li>
+<li><a href="/reunioes">Reuniões</a></li>
+<li><a href="/dashboard">Dashboard</a></li>
+<li><a href="/configuracoes">Configurações</a></li>
+<li><a href="/cadastro">Cadastrar</a></li>
+</ul>
+<h1><%= user[0].fname_user %></h1>
+<table>
+  <tr>
+    <th>Nome Completo</th>
+    <td><%= user[0].fname_user %> <%= user[0].lname_user %></td>
+  </tr>
+  <tr>
+    <th>Usuário</th>
+    <td><%= user[0].username_user %></td>
+  </tr>
+  <tr>
+    <th>Email</th>
+    <td><%= user[0].email_user %></td>
+  </tr>
+  <tr>
+    <th>Data Criado</th>
+    <td><%= user[0].date_create_user %></td>
+  </tr>
+  <tr>
+    <th>Status</th>
+    <td><%= user[0].status_user %></td>
+  </tr>
+</table>
+</body>
+</html>

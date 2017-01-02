@@ -1,0 +1,34 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>Bear Meeting - Entrar</title>
+<link rel="stylesheet" href="/css/master.css">
+</head>
+<body class="home">
+<ul class="menu">
+<li><a href="/" class="active">Entrar</a></li>
+<li><a href="/cadastro">Cadastrar</a></li>
+</ul>
+<h1>ENTRAR</h1>
+
+<div class="container">
+
+  <% if(validation.length > 0){ %>
+    <div class="alert alert-danger">
+      <strong>Atenção</strong>
+      <ul>
+        <% for(var i = 0; i < validation.length; i++){ %>
+        <li><%= validation[i].msg %></li>
+        <% } %>
+      </ul>
+    </div>
+  <% } %>
+
+  <form class="" action="/login" method="post">
+    <input type="text" name="username_user" placeholder="Usuário">
+    <input type="password" name="passwd_user" placeholder="Senha">
+    <input type="submit" name="" value="ENTRAR">
+  </form>
+</div>
+</body>
+</html>

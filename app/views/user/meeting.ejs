@@ -1,0 +1,45 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title><%= meeting[0].title_meeting %></title>
+<link rel="stylesheet" href="/css/master.css">
+</head>
+<body>
+<ul class="menu">
+<li><a href="/">Início</a></li>
+<li><a href="/perfil">Perfil</a></li>
+<li><a href="/reunioes" class="active">Reuniões</a></li>
+<li><a href="/dashboard">Dashboard</a></li>
+<li><a href="/configuracoes">Configurações</a></li>
+<li><a href="/cadastro">Cadastrar</a></li>
+</ul>
+<h1><%= meeting[0].title_meeting %> <sup class="status_meeting" title="status"><%= meeting[0].status_meeting%><sup></h1>
+<table>
+  <tr>
+    <th>Descrição</th>
+    <td><%= meeting[0].note_meeting %></td>
+  </tr>
+  <tr>
+    <th>Data Criação</th>
+    <td><%= meeting[0].date_create_meeting %></td>
+  </tr>
+  <tr>
+    <th>Data Agendada</th>
+    <td><%= meeting[0].date_event_meeting %></td>
+  </tr>
+  <tr>
+    <th>Responsável</th>
+    <td><%= meeting[0].parent_id_parent %></td>
+  </tr>
+  <tr>
+    <th>Professor</th>
+    <td><%= meeting[0].teacher_id_teacher %></td>
+  </tr>
+  <tr>
+    <th>Usuário</th>
+    <td><%= meeting[0].user_id_user %></td>
+  </tr>
+</table>
+<a href="/reunioes/nova" class="button fab">+</a>
+</body>
+</html>

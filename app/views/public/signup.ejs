@@ -1,0 +1,35 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>Bear Meeting - Cadastrar</title>
+<link rel="stylesheet" href="/css/master.css">
+</head>
+<body>
+<ul class="menu">
+<li><a href="/login">Entrar</a></li>
+<li><a href="/cadastro" class="active">Cadastrar</a></li>
+</ul>
+<h1>Cadastrar</h1>
+<div class="container">
+
+  <% if(validation.length > 0){ %>
+    <div class="alert alert-danger">
+      <strong>Atenção</strong>
+      <ul>
+        <% for(var i = 0; i < validation.length; i++){ %>
+        <li><%= validation[i].msg %></li>
+        <% } %>
+      </ul>
+    </div>
+  <% } %>
+
+  <form class="" action="/cadastrar" method="post">
+    <input type="text" name="fname_user" value="<%=signupData.fname_user%>" placeholder="Digite seu nome completo">
+    <input type="email" name="email_user" value="<%=signupData.email_user%>" placeholder="Digite seu email">
+    <input type="text" name="username_user" value="<%=signupData.username_user%>" placeholder="Digite nome de usuário">
+    <input type="password" name="passwd_user" value="<%=signupData.passwd_user%>" placeholder="Digite sua senha secreta">
+    <input type="submit" name="" value="CADASTRAR">
+  </form>
+</div>
+</body>
+</html>

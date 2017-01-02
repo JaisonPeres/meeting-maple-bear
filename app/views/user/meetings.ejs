@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>Bear Meeting - Reuniões</title>
+<link rel="stylesheet" href="/css/master.css">
+</head>
+<body>
+<ul class="menu">
+<li><a href="/">Início</a></li>
+<li><a href="/perfil">Perfil</a></li>
+<li><a href="/reunioes" class="active">Reuniões</a></li>
+<li><a href="/dashboard">Dashboard</a></li>
+<li><a href="/configuracoes">Configurações</a></li>
+<li><a href="/cadastro">Cadastrar</a></li>
+</ul>
+<h1>REUNIÕES AGENDADAS</h1>
+
+<div class="meetings_container">
+  <% for (var i=0; i < meeting.length; i++) { %>
+    <div class="meeting_card">
+      <div class="meeting_card_head">
+        <h1><%= meeting[i].title_meeting %></h1>
+      </div>
+      <div class="meeting_card_body">
+        <p><%= meeting[i].note_meeting %></p>
+        <p><%= meeting[i].date_event_meeting %></p>
+        <p><%= meeting[i].time_event_meeting %></p>
+      </div>
+      <div class="meeting_card_footer">
+        <ul>
+          <li><a href="reuniao/<%= meeting[i].id_meeting %>" class="button actions">VER</a></li>
+        </ul>
+      </div>
+    </div>
+  <% } %>
+</div>
+<a href="/reunioes/nova" class="button fab">+</a>
+</body>
+</html>
