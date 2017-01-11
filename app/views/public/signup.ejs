@@ -2,18 +2,26 @@
 <head>
 <meta charset="utf-8">
 <title>Bear Meeting - Cadastrar</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="/css/master.css">
+<link id="favicon" rel="shortcut icon" href="/images/favicon.png" type="image/png">
 </head>
 <body>
-<ul class="menu">
-<li><a href="/login">Entrar</a></li>
-<li><a href="/cadastro" class="active">Cadastrar</a></li>
-</ul>
-<h1>Cadastrar</h1>
+<nav class="navbar navbar-static-top navbar-light bg-faded">
+  <a href="/" class="navbar-brand">MBM</a>
+  <ul class="nav navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" href="/login">Login</a>
+    </li>
+    <li class="nav-item active">
+      <a class="nav-link" href="/cadastro">Cadastro</a>
+    </li>
+  </ul>
+</nav>
 <div class="container">
-
   <% if(validation.length > 0){ %>
-    <div class="alert alert-danger">
+    <div class="alert alert-danger form-sign">
       <strong>Atenção</strong>
       <ul>
         <% for(var i = 0; i < validation.length; i++){ %>
@@ -23,12 +31,17 @@
     </div>
   <% } %>
 
-  <form class="" action="/cadastrar" method="post">
-    <input type="text" name="fname_user" value="<%=signupData.fname_user%>" placeholder="Digite seu nome completo">
-    <input type="email" name="email_user" value="<%=signupData.email_user%>" placeholder="Digite seu email">
-    <input type="text" name="username_user" value="<%=signupData.username_user%>" placeholder="Digite nome de usuário">
-    <input type="password" name="passwd_user" value="<%=signupData.passwd_user%>" placeholder="Digite sua senha secreta">
-    <input type="submit" name="" value="CADASTRAR">
+  <form class="form-sign" action="/cadastrar" method="post">
+    <h2 class="form-signin-heading">Cadastrar</h2>
+    <label for="inputEmail" class="sr-only">Nome</label>
+    <input type="text" name="fname_user" class="form-control" value="<%=signupData.fname_user%>" placeholder="Digite seu primeiro nome">
+    <label for="inputEmail" class="sr-only">Email</label>
+    <input type="email" name="email_user" class="form-control" value="<%=signupData.email_user%>" placeholder="Digite seu primeiro nome">
+    <label for="inputEmail" class="sr-only">Usuário</label>
+    <input type="text" name="username_user" class="form-control" value="<%=signupData.username_user%>" placeholder="Digite nome de usuário">
+    <label for="inputPassword" class="sr-only">Senha</label>
+    <input type="password" id="passwd_user" name="passwd_user" class="form-control" placeholder="Digite sua senha secreta">
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Cadastrar</button>
   </form>
 </div>
 </body>

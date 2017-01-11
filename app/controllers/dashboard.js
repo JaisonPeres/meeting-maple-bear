@@ -1,7 +1,7 @@
 module.exports.dashboard = function (app, req, res) {
-    if(req.session.auth){
-      res.render("admin/dashboard");
-    }else{
+    if(req.session.auth !== true){
       res.redirect('/login');
+      return;
     }
+    res.render("admin/dashboard");
 }

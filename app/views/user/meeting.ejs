@@ -2,44 +2,58 @@
 <head>
 <meta charset="utf-8">
 <title><%= meeting[0].title_meeting %></title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="/css/master.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link id="favicon" rel="shortcut icon" href="/images/favicon.png" type="image/png">
 </head>
 <body>
-<ul class="menu">
-<li><a href="/">Início</a></li>
-<li><a href="/perfil">Perfil</a></li>
-<li><a href="/reunioes" class="active">Reuniões</a></li>
-<li><a href="/dashboard">Dashboard</a></li>
-<li><a href="/configuracoes">Configurações</a></li>
-<li><a href="/cadastro">Cadastrar</a></li>
+<nav class="navbar navbar-static-top navbar-light bg-faded">
+<a href="/" class="navbar-brand">MBM</a>
+<ul class="nav navbar-nav">
+  <li class="nav-item">
+    <a class="nav-link" href="/">Início</a>
+  </li>
+  <li class="nav-item active">
+    <a class="nav-link" href="/reunioes">Reuniões</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/dashboard">Dashboard</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/configuracoes">Config</a>
+  </li>
+  <li class="nav-item float-xs-right">
+    <a class="nav-link" href="/sair">Sair</a>
+  </li>
 </ul>
-<h1><%= meeting[0].title_meeting %> <sup class="status_meeting" title="status"><%= meeting[0].status_meeting%><sup></h1>
-<table>
+</nav>
+<div class="container">
+<h2><%= meeting[0].title_meeting %> <span class="badge warning"><%= meeting[0].code_meeting %><span></h2>
+<table class="table table-striped">
   <tr>
-    <th>Descrição</th>
+    <th>Criada por</th>
+    <td><%= meeting[0].user %></td>
+  </tr>
+  <tr>
+    <th>Nota</th>
     <td><%= meeting[0].note_meeting %></td>
   </tr>
   <tr>
-    <th>Data Criação</th>
-    <td><%= meeting[0].date_create_meeting %></td>
+    <th>Turma</th>
+    <td><%= meeting[0].class_meeting %></td>
   </tr>
   <tr>
-    <th>Data Agendada</th>
+    <th>Data</th>
     <td><%= meeting[0].date_event_meeting %></td>
   </tr>
   <tr>
-    <th>Responsável</th>
-    <td><%= meeting[0].parent_id_parent %></td>
-  </tr>
-  <tr>
-    <th>Professor</th>
-    <td><%= meeting[0].teacher_id_teacher %></td>
-  </tr>
-  <tr>
-    <th>Usuário</th>
-    <td><%= meeting[0].user_id_user %></td>
+    <th>Horário</th>
+    <td><%= meeting[0].time_event_meeting %></td>
   </tr>
 </table>
-<a href="/reunioes/nova" class="button fab">+</a>
+<a href="/reunioes/nova" class="btn btn-danger btn-radius">+</a>
+</div>
 </body>
 </html>

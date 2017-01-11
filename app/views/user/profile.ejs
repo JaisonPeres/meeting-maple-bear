@@ -2,23 +2,35 @@
 <head>
 <meta charset="utf-8">
 <title>Bear Meeting - Perfil</title>
-<link rel="stylesheet" href="/css/master.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+<!--<link rel="stylesheet" href="/css/master.css">-->
+<link id="favicon" rel="shortcut icon" href="/images/favicon.png" type="image/png">
 </head>
 <body>
-<ul class="menu">
-<li><a href="/">Início</a></li>
-<li><a href="/perfil" class="active">Perfil</a></li>
-<li><a href="/reunioes">Reuniões</a></li>
-<li><a href="/dashboard">Dashboard</a></li>
-<li><a href="/configuracoes">Configurações</a></li>
-<li><a href="/cadastro">Cadastrar</a></li>
+<nav class="navbar navbar-static-top navbar-light bg-faded">
+<a href="/" class="navbar-brand">MBM</a>
+<ul class="nav navbar-nav">
+  <li class="nav-item active">
+    <a class="nav-link" href="/">Início</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/reunioes">Reuniões</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/dashboard">Dashboard</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/configuracoes">Config</a>
+  </li>
+  <li class="nav-item float-xs-right">
+    <a class="nav-link" href="/sair">Sair</a>
+  </li>
 </ul>
+</nav>
+<div class="container">
 <h1><%= user[0].fname_user %></h1>
 <table>
-  <tr>
-    <th>Nome Completo</th>
-    <td><%= user[0].fname_user %> <%= user[0].lname_user %></td>
-  </tr>
   <tr>
     <th>Usuário</th>
     <td><%= user[0].username_user %></td>
@@ -26,14 +38,6 @@
   <tr>
     <th>Email</th>
     <td><%= user[0].email_user %></td>
-  </tr>
-  <tr>
-    <th>Data Criado</th>
-    <td><%= user[0].date_create_user %></td>
-  </tr>
-  <tr>
-    <th>Status</th>
-    <td><%= user[0].status_user %></td>
   </tr>
 </table>
 </body>

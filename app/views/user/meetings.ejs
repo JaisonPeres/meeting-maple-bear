@@ -2,38 +2,58 @@
 <head>
 <meta charset="utf-8">
 <title>Bear Meeting - Reuniões</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/css/font-awesome.min.css">
 <link rel="stylesheet" href="/css/master.css">
+<link id="favicon" rel="shortcut icon" href="/images/favicon.png" type="image/png">
 </head>
 <body>
-<ul class="menu">
-<li><a href="/">Início</a></li>
-<li><a href="/perfil">Perfil</a></li>
-<li><a href="/reunioes" class="active">Reuniões</a></li>
-<li><a href="/dashboard">Dashboard</a></li>
-<li><a href="/configuracoes">Configurações</a></li>
-<li><a href="/cadastro">Cadastrar</a></li>
+<nav class="navbar navbar-static-top navbar-light bg-faded">
+<a href="/" class="navbar-brand">MBM</a>
+<ul class="nav navbar-nav">
+  <li class="nav-item">
+    <a class="nav-link" href="/">Início</a>
+  </li>
+  <li class="nav-item active">
+    <a class="nav-link" href="/reunioes">Reuniões</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/dashboard">Dashboard</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/configuracoes">Config</a>
+  </li>
+  <li class="nav-item float-xs-right">
+    <a class="nav-link" href="/sair">Sair</a>
+  </li>
 </ul>
-<h1>REUNIÕES AGENDADAS</h1>
+</nav>
+<div class="container">
+<h2> REUNIÕES AGENDADAS <span class="badge danger"><%=meetings.length%><span></h2>
+  <div class="row">
+    <% for (var i=0; i < meetings.length; i++) { %>
+      <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 meeting-card">
+        <div class="meeting_card_head">
+          <h1><i class="fa fa-calendar-check-o" aria-hidden="true"></i> <%= meetings[i].title_meeting %></h1>
+        </div>
+        <div class="meeting_card_body">
+          <p> <i class="fa fa-user-circle-o" aria-hidden="true"></i> <%= meetings[i].user %></p>
+          <p> <i class="fa fa-tag" aria-hidden="true"></i> <%= meetings[i].code_meeting %></p>
+          <p> <i class="fa fa-users" aria-hidden="true"></i> <%= meetings[i].class_meeting %></p>
+          <p> <i class="fa fa-calendar" aria-hidden="true"></i> <%= meetings[i].date_event_meeting %></p>
+        </div>
+        <div class="meeting_card_footer">
+          <a href="#" class="btn btn-default"><i class="fa fa-clock-o" aria-hidden="true"></i> <%= meetings[i].time_event_meeting %></a>
+          <a href="reuniao/<%= meetings[i].code_meeting %>" class="btn btn-default"><i class="fa fa-plus" aria-hidden="true"></i></a>
+          <a href="#" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    <% } %>
+  </div>
 
-<div class="meetings_container">
-  <% for (var i=0; i < meeting.length; i++) { %>
-    <div class="meeting_card">
-      <div class="meeting_card_head">
-        <h1><%= meeting[i].title_meeting %></h1>
-      </div>
-      <div class="meeting_card_body">
-        <p><%= meeting[i].note_meeting %></p>
-        <p><%= meeting[i].date_event_meeting %></p>
-        <p><%= meeting[i].time_event_meeting %></p>
-      </div>
-      <div class="meeting_card_footer">
-        <ul>
-          <li><a href="reuniao/<%= meeting[i].id_meeting %>" class="button actions">VER</a></li>
-        </ul>
-      </div>
-    </div>
-  <% } %>
+  <a href="/reunioes/nova" class="btn btn-danger btn-radius">+</a>
 </div>
-<a href="/reunioes/nova" class="button fab">+</a>
 </body>
 </html>

@@ -1,7 +1,7 @@
 module.exports.settings = function(app, req, res){
-    if(req.session.auth){
-        res.render("admin/settings");
-    }else{
+    if(req.session.auth !== true){
       res.redirect('/login');
+      return;
     }
+    res.render("admin/settings");
 }

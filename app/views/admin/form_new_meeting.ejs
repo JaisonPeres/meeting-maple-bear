@@ -2,19 +2,34 @@
   <head>
     <meta charset="utf-8">
     <title>Bear Meeting - Reuniões</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/master.css">
+    <link id="favicon" rel="shortcut icon" href="/images/favicon.png" type="image/png">
   </head>
   <body>
-    <ul class="menu">
-      <li><a href="/">Início</a></li>
-      <li><a href="/perfil">Perfil</a></li>
-      <li><a href="/reunioes" class="active">Reuniões</a></li>
-      <li><a href="/dashboard">Dashboard</a></li>
-      <li><a href="/configuracoes">Configurações</a></li>
-      <li><a href="/sair">Sair</a></li>
-    </ul>
-    <h1>Adicionar Reunião</h1>
+    <nav class="navbar navbar-static-top navbar-light bg-faded">
+      <a href="/" class="navbar-brand">MBM</a>
+      <ul class="nav navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Início</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/reunioes">Reuniões</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/dashboard">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/configuracoes">Config</a>
+        </li>
+        <li class="nav-item float-xs-right">
+          <a class="nav-link" href="/sair">Sair</a>
+        </li>
+      </ul>
+    </nav>
     <div class="container">
+
       <% if(validacao.length > 0){ %>
         <div class="alert alert-danger">
           <strong>Atenção</strong>
@@ -25,22 +40,21 @@
           </ul>
         </div>
       <% } %>
-      <form action="/reunioes/salvar" method="post">
-        <input id="title_meeting" type="text"name="title_meeting" value="<%=meeting.title_meeting%>" placeholder="Título da Reunião">
+      <form action="/reunioes/salvar" method="post" class="form-meeting">
+        <h2>Adicionar Reunião</h2>
+        <input id="title_meeting" type="text" name="title_meeting" class="form-control" value="<%=meeting.title_meeting%>" placeholder="Título da Reunião">
         <br>
-        <textarea id="note_meeting" name="note_meeting" value="<%=meeting.note_meeting%>" rows="1" cols="80" placeholder="Descreva a reunião"></textarea>
+        <textarea id="note_meeting" name="note_meeting" class="form-control" value="<%=meeting.note_meeting%>" rows="1" cols="80" placeholder="Descreva a reunião"></textarea>
         <br>
-        <input id="date_event_meeting" type="date" value="<%=meeting.date_event_meeting%>" name="date_event_meeting">
+        <input id="date_event_meeting" type="date" class="form-control" value="<%=meeting.date_event_meeting%>" name="date_event_meeting">
         <br>
-        <input id="time_event_meeting" type="time" value="<%=meeting.time_event_meeting%>" name="time_event_meeting">
+        <input id="time_event_meeting" type="time" class="form-control" value="<%=meeting.time_event_meeting%>" name="time_event_meeting">
         <br>
-        <input id="parent_id_parent" type="text" placeholder="Responsável" name="parent_id_parent" value="<%=meeting.parent_id_parent%>" value="1">
+        <input id="class_meeting" type="text" placeholder="Turma" name="class_meeting" class="form-control" value="<%=meeting.class_meeting%>" value="3">
         <br>
-        <input id="user_id_user" type="text" placeholder="Usuário" name="user_id_user" value="<%=meeting.user_id_user%>" value="3">
+        <input id="code_meeting" type="text" placeholder="Código" name="code_meeting" class="form-control" value="<%=meeting.code_meeting%>" value="3">
         <br>
-        <input id="teacher_id_teacher" type="text" placeholder="Professor" name="teacher_id_teacher" value="<%=meeting.teacher_id_teacher%>" value="1">
-        <br>
-        <input type="submit" name="" value="CADASTRAR">
+        <button type="submit" name="" class="btn btn-primary" >Cadastrar</button>
       </form>
     </div>
 
