@@ -1,4 +1,4 @@
-module.exports.meetings = function(app, req, res){
+module.exports.meetings = function(app, req, res, type){
 
   if(req.session.auth !== true){
     res.redirect('/login');
@@ -10,7 +10,7 @@ module.exports.meetings = function(app, req, res){
 
   var user = req.session.user;
 
-  meetingsDAO.getMeetings(user, req, res);
+  meetingsDAO.getMeetings(user, req, res, type);
 }
 module.exports.meeting = function(app, code_meeting, req, res){
 
@@ -33,7 +33,6 @@ module.exports.form_new_meeting = function(app, req, res){
 }
 module.exports.meeting_save = function(app, req, res){
   var meeting = req.body;
-
   /* Express Validator - Validando os dados do formulário
   */
   req.assert('title_meeting', 'Título Obrigatório').notEmpty();
@@ -46,10 +45,8 @@ module.exports.meeting_save = function(app, req, res){
   var user = req.session.user;
 
   meeting.user = user;
-  
+
   if(errors){
-    //res.redirect('/reunioes/nova');
-    console.log(errors);
     /* Renderiza no formulário os erros e os próprios dados preenchidos
     */
     res.render('admin/form_new_meeting', {validacao: errors, meeting: meeting});
@@ -58,7 +55,26 @@ module.exports.meeting_save = function(app, req, res){
     */
     var connection = app.config.dbConnection();
     var meetingDAO = new app.app.models.MeetingsDAO(connection);
-    meetingDAO.saveMeeting(meeting);
+    meetingDAO.saveMeeting(app, meeting);
+    meetingDAO.inviteMeeting(app, meeting);
     res.redirect('/reunioes');
+  }
+}
+module.exports.reinviteMeeting = function(app, code_meeting, req, res){
+  var connection = app.config.dbConnection();
+  var meetingDAO = new app.app.models.MeetingsDAO(connection);
+  meetingDAO.reinviteMeeting(app, code_meeting, req, res);
+}
+
+module.exports.confirmMeeting = function(app, code_meeting, status_meeting, req, res){
+
+  if(status_meeting == 2){
+    res.redirect('/reunioes');
+    console.log('Reunião Já Confirmada');
+    return;
+  }else if(status_meeting == 1){
+    var connection = app.config.dbConnection();
+    var meetingDAO = new app.app.models.MeetingsDAO(connection);
+    meetingDAO.confirmMeeting(app, code_meeting, req, res);
   }
 }

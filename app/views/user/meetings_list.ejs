@@ -1,0 +1,69 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>Bear Meeting - Reuniões</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/master.css">
+<link id="favicon" rel="shortcut icon" href="/images/favicon.png" type="image/png">
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Maple Bear Meeting</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav pull-right">
+          <li><a href="/">Início</a></li>
+          <li class="active"><a class="nav-link" href="/reunioes">Reuniões</a></li>
+          <li><a class="nav-link" href="/dashboard">Dashboard</a></li>
+          <li><a class="nav-link" href="/configuracoes">Configurações</a></li>
+          <li class=""><a class="nav-link" href="/sair">Sair</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+<div class="container-fluid meetings_list_container">
+  <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 meetings_list">
+        <div class="row">
+            <% for (var i=0; i < meetings.length; i++) { %>
+            <div class="row meeting_list_item" style="box-shadow: -2px 0px 0px <%=meetings[i].status_meeting.color%>">
+              <div class="info col-lg-1 col-md-1 col-xs-3 col-sm-2 text-center"><%= meetings[i].code_meeting %></div>
+              <div class="info col-lg-3 col-md-3 col-xs-7 col-sm-6"><%= meetings[i].title_meeting %></div>
+              <div class="info col-lg-1 col-md-1 hidden-xs hidden-sm text-center"><%= meetings[i].class_meeting %></div>
+              <div class="info col-lg-1 col-md-1 col-sm-1 hidden-xs text-center">0/9</div>
+              <div class="col-lg-6 col-md-6 col-xs-2 col-sm-3 meetings_list_actions">
+                <div class="row">
+                  <div class="info col-lg-4 col-md-4 col-sm-4 hidden-xs">
+                    <a href="/check/reuniao/<%= meetings[i].code_meeting %>/<%= meetings[i].status_meeting.value %>" title="<%= meetings[i].status_meeting.label %>" class="btn btn-<%=meetings[i].status_meeting.btn%>" style="color: <%=meetings[i].status_meeting.color%>"><i class="fa fa-calendar-<%= meetings[i].status_meeting.icon %>-o"></i><span class="hidden-sm"> <%= meetings[i].date_event_meeting %></span></a>
+                  </div>
+                  <div class="info col-lg-4 col-md-6 col-sm-4 hidden-xs">
+                    <a href="#" title="Período" class="btn btn-default"><i class="fa fa-clock-o" aria-hidden="true"></i><span class="hidden-sm"> <%= meetings[i].time_init_event_meeting %> - <%= meetings[i].time_final_event_meeting %></span></a>
+                  </div>
+                  <div class="info col-lg-2 hidden-md hidden-xs hidden-sm">
+                    <a href="/reuniao/enviar/<%= meetings[i].code_meeting %>" title="Reenviar Convites" class="btn btn-default"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></a>
+                  </div>
+                  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
+                    <a href="/reuniao/<%= meetings[i].code_meeting %>" title="Detalhar" class="btn btn-default"><i class="fa fa-folder-o" aria-hidden="true"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% } %>
+      </div>
+  </div>
+  <a href="/reunioes" class="btn btn-info btn-radius left"><i class="fa fa-file" aria-hidden="true"></i></a>
+  <a href="/reunioes/nova" class="btn btn-danger btn-radius">+</a>
+</div>
+</body>
+</html>

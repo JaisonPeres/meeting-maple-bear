@@ -3,11 +3,8 @@ module.exports.profile = function(app, req, res){
     res.redirect('/login');
     return;
   }
-
   var connection = app.config.dbConnection();
-  var UsersDAO = new app.app.models.UsersDAO(connection);
-
+  var userDAO = new app.app.models.UsersDAO(connection);
   var user = req.session.user;
-
-  UsersDAO.getUserProfile(user, req, res);
+  userDAO.getUser(user, req, res);
 }

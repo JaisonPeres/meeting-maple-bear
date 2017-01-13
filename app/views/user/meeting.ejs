@@ -2,58 +2,142 @@
 <head>
 <meta charset="utf-8">
 <title><%= meeting[0].title_meeting %></title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="/css/master.css">
+<meta name="viewport" content="widh3=device-widh3, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/master.css">
 <link id="favicon" rel="shortcut icon" href="/images/favicon.png" type="image/png">
 </head>
 <body>
-<nav class="navbar navbar-static-top navbar-light bg-faded">
-<a href="/" class="navbar-brand">MBM</a>
-<ul class="nav navbar-nav">
-  <li class="nav-item">
-    <a class="nav-link" href="/">Início</a>
-  </li>
-  <li class="nav-item active">
-    <a class="nav-link" href="/reunioes">Reuniões</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="/dashboard">Dashboard</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="/configuracoes">Config</a>
-  </li>
-  <li class="nav-item float-xs-right">
-    <a class="nav-link" href="/sair">Sair</a>
-  </li>
-</ul>
-</nav>
-<div class="container">
-<h2><%= meeting[0].title_meeting %> <span class="badge warning"><%= meeting[0].code_meeting %><span></h2>
-<table class="table table-striped">
-  <tr>
-    <th>Criada por</th>
-    <td><%= meeting[0].user %></td>
-  </tr>
-  <tr>
-    <th>Nota</th>
-    <td><%= meeting[0].note_meeting %></td>
-  </tr>
-  <tr>
-    <th>Turma</th>
-    <td><%= meeting[0].class_meeting %></td>
-  </tr>
-  <tr>
-    <th>Data</th>
-    <td><%= meeting[0].date_event_meeting %></td>
-  </tr>
-  <tr>
-    <th>Horário</th>
-    <td><%= meeting[0].time_event_meeting %></td>
-  </tr>
-</table>
-<a href="/reunioes/nova" class="btn btn-danger btn-radius">+</a>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Maple Bear Meeting</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav pull-right">
+          <li><a href="/">Início</a></li>
+          <li class="active"><a class="nav-link" href="/reunioes">Reuniões</a></li>
+          <li><a class="nav-link" href="/dashboard">Dashboard</a></li>
+          <li><a class="nav-link" href="/configuracoes">Configurações</a></li>
+          <li><a class="nav-link" href="/sair">Sair</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+<div class="container-fluid details-meeting-container">
+  <div class="row">
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md-6">
+      <div class="row details-container">
+        <div class="col-md-12">
+          <div class="row detail-row"  style="border-bottom: 2px solid <%= meeting[0].status_meeting.color %>;">
+            <div class="col-md-9 details-index">
+              <h3><%= meeting[0].title_meeting %> <span style="color: <%= meeting[0].status_meeting.color %>;"><%= meeting[0].code_meeting %></span></h3>
+            </div>
+            <div class="col-md-3 details-actions">
+              <a href="/check/reuniao/<%= meeting[0].code_meeting %>/<%= meeting[0].status_meeting.value %>" title="<%= meeting[0].status_meeting.label %>" class="btn btn-<%=meeting[0].status_meeting.btn%>" style="color: <%=meeting[0].status_meeting.color%>"><i class="fa fa-calendar-<%= meeting[0].status_meeting.icon %>-o"></i></a>
+              <a href="/reuniao/enviar/<%= meeting[0].code_meeting %>" title="Reenviar Convites" class="btn btn-default"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="row detail-row">
+            <div class="col-md-4 details-index">
+              <span><i class="fa fa-user-circle-o" aria-hidden="true"></i> Criada por</span>
+            </div>
+            <div class="col-md-8">
+              <span><%= meeting[0].user %></span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="row detail-row">
+            <div class="col-md-4 details-index">
+              <span><i class="fa fa-calendar" aria-hidden="true"></i>  Criada em</span>
+            </div>
+            <div class="col-md-8">
+              <span><%= meeting[0].date_meeting%> às <%= meeting[0].time_meeting%></span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="row detail-row">
+            <div class="col-md-4 details-index">
+              <span><i class="fa fa-file" aria-hidden="true"></i> Nota</span>
+            </div>
+            <div class="col-md-8">
+              <span><%= meeting[0].note_meeting %></span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="row detail-row">
+            <div class="col-md-4 details-index">
+              <span><i class="fa fa-users" aria-hidden="true"></i>  Turma</span>
+            </div>
+            <div class="col-md-8">
+              <span><%= meeting[0].class_meeting %></span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="row detail-row">
+            <div class="col-md-4 details-index">
+              <span><i class="fa fa-calendar" aria-hidden="true"></i>  Data</span>
+            </div>
+            <div class="col-md-8">
+              <span><%= meeting[0].date_event_meeting %></span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="row detail-row">
+            <div class="col-md-4 details-index">
+              <span><i class="fa fa-clock-o" aria-hidden="true"></i>  Período</span>
+            </div>
+            <div class="col-md-8">
+              <span><%= meeting[0].time_init_event_meeting %> às <%= meeting[0].time_final_event_meeting %></span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="row detail-row">
+            <div class="col-md-4 details-index " >
+              <span><i class="fa fa-<%= meeting[0].status_meeting.icon %>" aria-hidden="true"></i> Status</span>
+            </div>
+            <div class="col-md-8">
+              <span><%= meeting[0].status_meeting.label %></span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="row detail-row">
+            <div class="col-md-4 details-index " >
+              <span><i class="fa fa-envelope" aria-hidden="true"></i> Emails</span>
+            </div>
+            <div class="col-md-8">
+              <span><%= meeting[0].emails_meeting %></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+
+    </div>
+  </div>
+  <a href="/reunioes/list" class="btn btn-info btn-radius left"><i class="fa fa-th-list" aria-hidden="true"></i></a>
+  <a href="/reunioes/nova" class="btn btn-danger btn-radius">+</a>
 </div>
 </body>
 </html>
