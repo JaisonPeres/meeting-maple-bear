@@ -39,14 +39,11 @@
     </div>
     <div class="col-md-6">
       <div class="row details-container">
+        <form class="" action="#" method="post">
         <div class="col-md-12">
-          <div class="row detail-row"  style="border-bottom: 2px solid <%= meeting[0].status_meeting.color %>;">
-            <div class="col-md-9 details-index">
+          <div class="row detail-row"  style="border-bottom: 6px solid <%= meeting[0].status_meeting.color %>;">
+            <div class="col-md-12 details-index">
               <h3><%= meeting[0].title_meeting %> <span style="color: <%= meeting[0].status_meeting.color %>;"><%= meeting[0].code_meeting %></span></h3>
-            </div>
-            <div class="col-md-3 details-actions">
-              <a href="/check/reuniao/<%= meeting[0].code_meeting %>/<%= meeting[0].status_meeting.value %>" title="<%= meeting[0].status_meeting.label %>" class="btn btn-<%=meeting[0].status_meeting.btn%>" style="color: <%=meeting[0].status_meeting.color%>"><i class="fa fa-calendar-<%= meeting[0].status_meeting.icon %>-o"></i></a>
-              <a href="/reuniao/enviar/<%= meeting[0].code_meeting %>" title="Reenviar Convites" class="btn btn-default"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></a>
             </div>
           </div>
         </div>
@@ -63,7 +60,7 @@
         <div class="col-md-12">
           <div class="row detail-row">
             <div class="col-md-4 details-index">
-              <span><i class="fa fa-calendar" aria-hidden="true"></i>  Criada em</span>
+              <span><i class="fa fa-calendar-plus-o" aria-hidden="true"></i>  Criada em</span>
             </div>
             <div class="col-md-8">
               <span><%= meeting[0].date_meeting%> às <%= meeting[0].time_meeting%></span>
@@ -93,7 +90,7 @@
         <div class="col-md-12">
           <div class="row detail-row">
             <div class="col-md-4 details-index">
-              <span><i class="fa fa-calendar" aria-hidden="true"></i>  Data</span>
+              <span><i class="fa fa-calendar-check-o" aria-hidden="true"></i>  Data</span>
             </div>
             <div class="col-md-8">
               <span><%= meeting[0].date_event_meeting %></span>
@@ -113,30 +110,37 @@
         <div class="col-md-12">
           <div class="row detail-row">
             <div class="col-md-4 details-index " >
-              <span><i class="fa fa-<%= meeting[0].status_meeting.icon %>" aria-hidden="true"></i> Status</span>
+              <span><i class="fa <%= meeting[0].status_meeting.icon %>" aria-hidden="true"></i> Status</span>
             </div>
             <div class="col-md-8">
-              <span><%= meeting[0].status_meeting.label %></span>
+              <span>
+                <select class="" name="">
+                  <option value="<%= meeting[0].status_meeting.value %>"><%= meeting[0].status_meeting.label %></option>
+                  <option value="1">Cadastrada</option>
+                  <option value="3">Cancelada</option>
+                </select>
+              </span>
             </div>
           </div>
         </div>
         <div class="col-md-12">
           <div class="row detail-row">
             <div class="col-md-4 details-index " >
-              <span><i class="fa fa-envelope" aria-hidden="true"></i> Emails</span>
+              <span><a href="/reuniao/enviar/<%= meeting[0].code_meeting %>" title="Reenviar Convites" class="btn btn-default"><i class="fa fa-paper-plane-o" aria-hidden="true"></i> Emails</a> </span>
             </div>
             <div class="col-md-8">
               <span><%= meeting[0].emails_meeting %></span>
             </div>
           </div>
         </div>
+      </form>
       </div>
     </div>
     <div class="col-md-3">
 
     </div>
   </div>
-  <a href="/reunioes/list" class="btn btn-info btn-radius left"><i class="fa fa-th-list" aria-hidden="true"></i></a>
+  <a href="/reunioes/" class="btn btn-info btn-radius left"><i class="fa fa-th-large" aria-hidden="true"></i></a>
   <a href="/reunioes/nova" class="btn btn-danger btn-radius">+</a>
 </div>
 </body>

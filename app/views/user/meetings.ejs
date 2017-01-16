@@ -36,7 +36,7 @@
   <div class="row">
     <% for (var i=0; i < meetings.length; i++) { %>
       <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 meeting-card">
-        <div class="meeting_card_head" style="border-bottom: 2px solid <%=meetings[i].status_meeting.color%>">
+        <div class="meeting_card_head" onClick="window.open('/reuniao/<%= meetings[i].code_meeting %>', '_self')" style="border-bottom: 6px solid <%=meetings[i].status_meeting.color%>">
           <h1><%= meetings[i].title_meeting %></h1>
         </div>
         <div class="meeting_card_body">
@@ -48,13 +48,13 @@
         </div>
         <div class="meeting_card_footer">
           <a href="/reuniao/<%= meetings[i].code_meeting %>" title="Detalhar" class="btn btn-default"><i class="fa fa-folder-o" aria-hidden="true"></i></a>
-          <a href="/check/reuniao/<%= meetings[i].code_meeting %>/<%= meetings[i].status_meeting.value %>" title="<%= meetings[i].status_meeting.label %>" class="btn btn-<%=meetings[i].status_meeting.btn%>" style="color: <%=meetings[i].status_meeting.color%>"><i class="fa fa-calendar-<%= meetings[i].status_meeting.icon %>-o"></i></a>
+          <a href="/check/reuniao/<%= meetings[i].code_meeting %>/<%= meetings[i].status_meeting.value %>" title="<%= meetings[i].status_meeting.label %>" class="btn btn-<%=meetings[i].status_meeting.btn%>" style="color: <%=meetings[i].status_meeting.color%>"><i class="fa <%= meetings[i].status_meeting.icon %>"></i></a>
           <a href="/reuniao/enviar/<%= meetings[i].code_meeting %>" title="Reenviar Convites" class="btn btn-default"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></a>
         </div>
       </div>
     <% } %>
   </div>
-  <a href="/reunioes/list" class="btn btn-info btn-radius left"><i class="fa fa-th-list" aria-hidden="true"></i></a>
+  <a href="/reunioes/list" class="btn btn-info btn-radius left"><i class="fa fa-list" aria-hidden="true"></i></a>
   <a href="/reunioes/nova" class="btn btn-danger btn-radius">+</a>
 </div>
 </body>

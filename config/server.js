@@ -9,7 +9,7 @@ var nodemailer = require('nodemailer');
 var app = express();
 
 app.set('port', (process.env.PORT || 5000));
-app.set('host', '192.168.0.22');
+app.set('host', 'localhost');
 app.set('moment', moment);
 app.set('nodemailer', nodemailer);
 //MODIFICANDO A ENGINE DE VIEWS PARA EJS

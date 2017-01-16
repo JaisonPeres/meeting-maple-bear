@@ -61,7 +61,7 @@ MeetingsDAO.prototype.confirmMeeting = function(app, code_meeting, req, res){
       }
 
       var status = {
-        icon: 'check',
+        icon: 'fa-check-square',
         label: 'Confirmada',
         btn: 'success',
         value: 2,
@@ -85,7 +85,7 @@ MeetingsDAO.prototype.saveMeeting = function(app, meeting){
   meeting.time_meeting = moment().locale('pt-BR').format('LTS');
 
   meeting.status_meeting = {
-    icon: 'plus',
+    icon: 'fa-square-o',
     label: 'Cadastrada',
     btn: 'default',
     value: 1,

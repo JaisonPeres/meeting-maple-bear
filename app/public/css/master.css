@@ -22,7 +22,7 @@ body{
   -ms-transition: background 200ms ease;
   -o-transition: background 200ms ease;
   transition: background 200ms ease;
-  cursor: default;
+  cursor: pointer;
 }
 .meeting_list_item .info{
   border-right: solid #ebebeb 2px;
@@ -83,12 +83,22 @@ body{
   background-color: #fff;
   border-radius: 3px 3px 0px 0px;
   text-align: center;
+  cursor: pointer;
+  -webkit-transition: all 200ms ease;
+  -moz-transition: all 200ms ease;
+  -ms-transition: all 200ms ease;
+  -o-transition: all 200ms ease;
+  transition: all 200ms ease;
 }
 .meeting_card_body{
   padding: 20px;
   min-height: 100px;
   color: #666;
   background-color: #fff;
+  box-shadow: inset 0px 0px 0px #000;
+}
+.meeting_card_head:hover{
+  background-color: #ededed;
 }
 .meeting_card_head h1{
   color: #666;
