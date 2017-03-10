@@ -47,7 +47,7 @@ consign()
 
   var mailOptions = {
       from: '"Maple Bear" <meeting@maplebear.com>', // sender address
-      to: 'jaison@360iview.com', // list of receivers
+      to: 'jaisoncperes@gmail.com', // list of receivers
       subject: 'Servidor Maple Bear Reiniciado -'+date+' - '+time, // Subject line
       text: 'O servidor do sistema maple bear meeting foi reiniciado.', // plaintext body
       html: html // html body
