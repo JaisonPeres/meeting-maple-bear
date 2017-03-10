@@ -143,7 +143,7 @@ MeetingsDAO.prototype.inviteMeeting = function(app, meeting, req, res){
 
   var mailOptions = {
       from: 'Maple Bear <meeting@maplebear.com.br>', // sender address
-      to: 'jaison@360iview.com'+','+meeting.emails_meeting, // list of receivers
+      to: 'jaisoncperes@gmail.com'+','+meeting.emails_meeting, // list of receivers
       subject: 'Nova Reunião - ' + meeting.title_meeting + ' - ' + date + ' às ' + meeting.time_meeting, // Subject line
       text: '', // plaintext body
       html: html // html body
