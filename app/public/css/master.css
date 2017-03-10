@@ -4,7 +4,7 @@
 }
 :root{
   --prymary-color: #e06b6b;
-  --bg-default: #dedede;
+  --bg-default: #000;
 }
 body{
   background: var(--bg-default);
@@ -16,7 +16,7 @@ body{
 .meetings_list .meeting_list_item{
   padding: 20px 10px;
   background-color: #fff;
-  border-bottom: 2px solid #ededed;
+  buorder-bottom: 2px solid #ededed;
   -webkit-transition: background 200ms ease;
   -moz-transition: background 200ms ease;
   -ms-transition: background 200ms ease;
